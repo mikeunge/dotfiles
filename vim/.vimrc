@@ -7,8 +7,6 @@ endif
 
 " Install plugins via 'plug'
 call plug#begin('~/.vim/plugged')
-" Colorscheme ayu.
-Plug 'ayu-theme/ayu-vim'
 " Rust-lang linting, syntax, etc..
 Plug 'rust-lang/rust.vim'
 call plug#end()
@@ -18,5 +16,3 @@ filetype plugin indent on   " plugin support
 set number   " 'coding' numbers
 let g:rustfmt_autosave = 1   " formats rust code on safe
 set termguicolors   " enable termguicolors
-let ayucolor="mirage"   " set the correct design for colorscheme
-colorscheme ayu   " set the colorscheme
