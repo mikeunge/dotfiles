@@ -1,6 +1,3 @@
-# This is the zshrc file for: WSL Client
-# Last modified: 16.02.2020
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -9,18 +6,7 @@
 # Change the path to local user!
 export ZSH="/home/mike/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="nanotech"
 ZSH_THEME="cyber"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -95,20 +81,5 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-alias ls="ls -lah"
-alias lsd="ls -lahD */"
-alias rmf="rm -rf"
-alias update="sudo apt update && sudo apt upgrade -y"
-alias cl="clear"
-alias cls="cl"
-alias services="sudo service --status-all"
-alias confv="vim ~/.vimrc"
-alias confz="vim ~/.zshrc"
-alias reload=". ~/.zshrc"
-alias fetch="neofetch"
-alias treesize="sudo sh /treesize.sh"
+# Load aliases
+[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"

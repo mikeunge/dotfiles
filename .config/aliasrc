@@ -1,0 +1,23 @@
+# Convert a MB to GB.
+mbtogb(){
+	echo "scale=2; $1 / 1024^2" | bc
+}
+alias ls="exa -la"
+alias ld="exa -lD"
+alias rmf="rm -rf"
+alias update="sudo apt update && sudo apt upgrade -y"
+alias cl="clear"
+alias services-up="services | grep [+]"
+alias confv="vim ~/.vimrc"
+alias confz="vim ~/.zshrc"
+alias reload=". ~/.zshrc"
+alias neofetch="cl && neofetch --ascii ~/documents/fsociety00.txt"
+alias fetch="neofetch"
+alias treesize="sudo sh /treesize.sh"
+alias uuid="sudo blkid" # get uid from disk (eg. uuid /dev/sdb1)
+# Custom ones below
+alias task="tb --task"
+alias tasks="tb --timeline"
+alias start="tb --begin"
+alias note="tb --note"
+alias conn2pi="cl && ssh mike@192.168.0.250"
