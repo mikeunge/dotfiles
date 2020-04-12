@@ -15,4 +15,3 @@ syntax on   " enable syntax
 filetype plugin indent on   " plugin support
 set number   " 'coding' numbers
 let g:rustfmt_autosave = 1   " formats rust code on safe
-set termguicolors   " enable termguicolors
