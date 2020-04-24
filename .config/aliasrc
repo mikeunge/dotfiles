@@ -16,8 +16,3 @@ alias fetch="neofetch"
 alias treesize="sudo sh /treesize.sh"
 alias uuid="sudo blkid" # get uid from disk (eg. uuid /dev/sdb1)
 # Custom ones below
-alias task="tb --task"
-alias tasks="tb --timeline"
-alias start="tb --begin"
-alias note="tb --note"
-alias conn2pi="cl && ssh mike@192.168.0.250"
