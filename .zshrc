@@ -31,7 +31,14 @@ ZSH_THEME="cyber"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
+
+# Change the tab_title to a fixed string. MUST DISABLE AUTO_TITLE!!
+function precmd () {
+	title="WSL"
+	window_title="print -P - '\e]0;$title\a'"
+	echo -ne "$window_title"
+}
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
