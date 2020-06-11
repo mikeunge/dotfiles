@@ -35,7 +35,7 @@ DISABLE_AUTO_TITLE="true"
 
 # Change the tab_title to a fixed string. MUST DISABLE AUTO_TITLE!!
 function precmd () {
-	title="WSL"
+	title=`hostname`
 	window_title="print -P - '\e]0;$title\a'"
 	echo -ne "$window_title"
 }
