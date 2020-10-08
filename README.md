@@ -1,7 +1,4 @@
-# ☁ dotfiles (& more)
+# ☁ dotfiles
 
-## About
-> This is an assembly of all my (.)dotfiles and files I need on every new system.
-
-## Todo
-- Add installation script
+### About
+My mac os dotfiles.

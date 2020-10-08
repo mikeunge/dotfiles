@@ -1,92 +1,78 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+ZSH_DISABLE_COMPFIX=true
 
 # Path to your oh-my-zsh installation.
-#
-# Change the path to local user!
-export ZSH="/home/mike/.oh-my-zsh"
+export ZSH="/Users/mikeunge/.oh-my-zsh"
 
-ZSH_THEME="cyber"
+# Export my language settings.
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Define the theme.
+ZSH_THEME="mimix"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+export UPDATE_ZSH_DAYS=5
 
 # Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 
-# Change the tab_title to a fixed string. MUST DISABLE AUTO_TITLE!!
+# Change the tab_title to a fixed string. 
+# Make sure that AUTO_TITLE is disabled.
 function precmd () {
-	title=`hostname`
+	title="`hostname`"
 	window_title="print -P - '\e]0;$title\a'"
 	echo -ne "$window_title"
 }
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+# Waiting dots.
+COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+# History file and size settings.
+HISTFILE=~/.histfile
+HISTSIZE=20000
+SAVEHIST=10000
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# Disable bell ring notification thingy.
+setopt notify
+bindkey -e
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+# Load Plugin
+plugins=(git zsh-autosuggestions )
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
+# Don't delete this.
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+### User configuration ###
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Load aliases
+# Load aliases and fzf.
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ZSH_AUTOSUGGESTION config
+#
+auto_suggest_rand_color() {
+	# Generate a random color for ZSH_autosuggest, pre define below.
+	#
+	ZSH_AUTOSUGGEST_COLORPALETTE=("pink" "white" "yellow" "blue" "red" "green" "magenta" "cyan")
+	ZSH_AUTOSUGGEST_NUMBER_OF_COLORS=${#ZSH_AUTOSUGGEST_COLORPALETTE[@]}
+	ZSH_AUTOSUGGEST_COLOR=${ZSH_AUTOSUGGEST_COLORPALETTE[$RANDOM % $ZSH_AUTOSUGGEST_NUMBER_OF_COLORS]}
+}
+
+# Set ZSH_AUTOSUGGEST_RAINBOW to 1 if you want random colors.
+ZSH_AUTOSUGGEST_RAINBOW=0
+
+# Check the settings.
+if [[ $ZSH_AUTOSUGGEST_RAINBOW > 0 ]]; then
+	# Call the random function.
+	auto_suggest_rand_color
+else
+	# Define a color you want to use.
+	ZSH_AUTOSUGGEST_COLOR="magenta"
+fi
+
+# ZSH_AUTOSUGGEST change the color
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$ZSH_AUTOSUGGEST_COLOR,bold"
+ZSH_AUTOSUGGEST_USE_ASYN=true
+
+# Exports
+export PATH="/Applications/goneovim.app/Contents/MacOS:/Library/Frameworks/Python.framework/Versions/3.8/bin:/Users/mikeunge/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Users/mikeunge/.fzf/bin"

@@ -1,0 +1,28 @@
+# Directory related (ls, cp, rm,..)
+alias ls="exa -lhg"
+alias ll="ls"
+alias la="exa -lahg"
+alias ld="exa -lDhg"
+alias rmf="rm -rf"
+alias cp="cp -i"
+
+# Terminal stuff
+alias cl="clear"
+alias cll="cl && ll"
+alias fetch="pfetch"
+alias reload=". ~/.zshrc" # reload (source) the profile
+alias tb="cl && tb" # clear screen and call taskbook
+alias top="bpytop"
+
+# Editor and filemanager stuff
+alias vim="nvim"
+alias gvim="open -a goneovim"
+alias shfm="bash ~/.shfm/shfm >/dev/null"
+
+# Makes my life easier
+alias aliases="vim ~/.config/aliasrc"
+alias viminit="vim ~/.config/nvim/init.vim"
+alias gviminit="vim ~/.goneovim/setting.toml"
+alias zshrc="vim ~/.zshrc"
+alias theme="vim ~/.oh-my-zsh/custom/themes/mimix.zsh-theme"
+alias shrug="echo '\n¯\_(ツ)_/¯'"
