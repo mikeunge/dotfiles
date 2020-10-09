@@ -23,9 +23,17 @@ call plug#begin("~/.vim/plugged")
     Plug 'jiangmiao/auto-pairs'
 
     " Nerdtree & icons
-    "Plug 'scrooloose/nerdtree'
     Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
     Plug 'ryanoasis/vim-devicons'
+
+    # Nice vim manual
+    Plug 'vim-utils/vim-man'
+
+    # Auto-Complete
+	Plug 'ycm-core/YouCompleteMe'
+
+    # Undotree
+    Plug 'mbbill/undotree'
 
     " Ctrl+P fzf finder
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -72,6 +80,7 @@ set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
+set smartindent
 
 " Encoding and search cases
 set encoding=UTF-8
