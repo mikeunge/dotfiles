@@ -9,8 +9,7 @@ It has been heavily modified but I love the look and feel of the terminal so far
 *Will most likely tweak it here and there, but yeah, that's my fate...*
 
 
-### Screenshots
-> Some screenshots of how it looks and feels.
+## Screenshots
 
 #### _terminal
 ![terminal](assets/screenshots/terminal.png "Just my terminal...")
