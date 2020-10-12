@@ -22,17 +22,20 @@ call plug#begin("~/.vim/plugged")
     " Auto-Pairs (, [, {
     Plug 'jiangmiao/auto-pairs'
 
+	" Markdown Preview (needs nodejs && yarn)
+	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
     " Nerdtree & icons
     Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
     Plug 'ryanoasis/vim-devicons'
 
-    # Nice vim manual
+	" Nice vim manual
     Plug 'vim-utils/vim-man'
 
-    # Auto-Complete
+    " Auto-Complete
 	Plug 'ycm-core/YouCompleteMe'
 
-    # Undotree
+    " Undotree
     Plug 'mbbill/undotree'
 
     " Ctrl+P fzf finder
@@ -55,13 +58,13 @@ if (has("termguicolors"))
 endif
 
 " Enable syntax highlighting
-filetype off
+filetype on
 filetype plugin indent on
 syntax on
 
 " Change history & undo size
-set history=700
-set undolevels=700
+set history=1000
+set undolevels=1000
 
 " Show line numbers & length
 set number
@@ -184,6 +187,15 @@ let g:lightline = {
       \ }
 " Disable 'INSERT' mode, because airline shows it.
 set noshowmode
+
+
+" -Markdown Preview- 
+"
+" This will automatically start a preview window.
+let g:mkdp_auto_start=1
+" Automatically close the preview if markdown file gets closed.
+let g:mkdp_auto_close=1
+
 
 
 
