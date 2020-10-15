@@ -8,7 +8,7 @@
 if empty(glob('~/.vim/autoload/plug.vim'))
 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 	      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC 
 endif
 
 " Get Plugged
@@ -92,6 +92,10 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
+" Make double-<Esc> clear search highlights
+nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
+
+" Folding and mouse usage
 set foldmethod=indent
 set foldlevel=99
 set mouse=a
@@ -149,18 +153,8 @@ let g:startify_lists = [
         \ { 'type': 'commands',  'header': ['   Commands']       },
         \ ]
 
-" -NERDTree-
-"let g:NERDTreeShowHidden = 1
-"let g:NERDTreeMinimalUI = 1
-"let g:NERDTreeIgnore = []
-"let g:NERDTreeStatusline = ''
-" Automaticaly close nvim if NERDTree is only thing left open
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Toggle nerdtree
-"nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
 " -CHADTree-
-"
 " Map command CHADopen to control+b
 nnoremap <silent> <C-b> :CHADopen<CR>b
 
