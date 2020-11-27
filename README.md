@@ -1,22 +1,12 @@
-# ☁ dotfiles
+# dotfiles
+*My `Mac OS` dotfiles*
 
-### About
-> My `MacOS` dotfiles.
+### _about
+I use `iTerm2` as my terminal emulator and `tmux` for everythig inside. TextEditor is `vim` (❤️).
 
-I use `iTerm2` as my terminal emulator of choice.
-It has been heavily modified but I love the look and feel of the terminal so far.
+### _screenshots
+> **code**
+![code 1 pane](assets/screenshots/code_single.png "one code editor")
 
-*Will most likely tweak it here and there, but yeah, that's my fate...*
-
-
-## Screenshots
-
-#### _terminal
-![terminal](assets/screenshots/terminal.png "Just my terminal...")
-
-#### _vim
-![vim](assets/screenshots/vim.png "Just vim...")
-
-#### _code
-![code](assets/screenshots/code.png "Just code...")
-
+> **code split**
+![code 2 panes](assets/screenshots/code_multi.png "2 panes to edit")

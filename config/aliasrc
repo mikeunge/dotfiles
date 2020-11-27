@@ -1,28 +1,52 @@
-# Directory related (ls, cp, rm,..)
+# !CATUION! !CAUTION!
+#
+# Some aliases require programs/scripts to work proparly.
+#
+#
+# -------------------------- functions -------------------------------
+
+cur_date() {
+    dt="$(date +'%d.%m.%Y %T')"
+}
+
+# ----------------------------- dirs ---------------------------------
+
 alias ls="exa -lhg"
 alias ll="ls"
 alias la="exa -lahg"
 alias ld="exa -lDhg"
 alias rmf="rm -rf"
 alias cp="cp -i"
+alias fnd='f() { find *$1* -d 0 };f'
 
-# Terminal stuff
+# ---------------------------- terminal -----------------------------
+
 alias cl="clear"
 alias cll="cl && ll"
+alias cla="cl && la"
 alias fetch="pfetch"
 alias reload=". ~/.zshrc" # reload (source) the profile
+alias rltmux="tmux source-file ~/.tmux.conf" # reload tmux config
 alias tb="cl && tb" # clear screen and call taskbook
 alias top="bpytop"
 
-# Editor and filemanager stuff
+# ----------------------- editor & filemanager -----------------------
+
 alias vim="nvim"
-alias gvim="open -a goneovim"
 alias shfm="bash ~/.shfm/shfm >/dev/null"
 
-# Makes my life easier
+# ---------------------------- notes --------------------------------
+
+alias note='cur_date; f() { printf "[%s] - %s"\n" "$dt" "$1" >> ~/Documents/terminal.note };f'
+alias notes="cat ~/Documents/terminal.note"
+
+# ---------------------------- utils --------------------------------
+
 alias aliases="vim ~/.config/aliasrc"
 alias viminit="vim ~/.config/nvim/init.vim"
-alias gviminit="vim ~/.goneovim/setting.toml"
 alias zshrc="vim ~/.zshrc"
 alias theme="vim ~/.oh-my-zsh/custom/themes/mimix.zsh-theme"
+alias tmuxconf="vim ~/.tmux.conf"
 alias shrug="echo '\n¯\_(ツ)_/¯'"
+
+

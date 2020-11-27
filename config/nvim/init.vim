@@ -35,6 +35,9 @@ call plug#begin("~/.vim/plugged")
     " Auto-Complete
 	Plug 'ycm-core/YouCompleteMe'
 
+	" Install prettier
+	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
     " Undotree
     Plug 'mbbill/undotree'
 
@@ -191,6 +194,18 @@ let g:mkdp_auto_start=1
 let g:mkdp_auto_close=1
 
 
+" -Prettier-
+" Autoformat the file on save.
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#config#trailing_comma = 'none'
+let g:prettier#config#tab_width = 4 
+let g:prettier#config#use_tabs = 'auto'
 
 
-
+" -Tmux-
+"
+" Set the tmux window name to the current open file.
+" After the file get's closed, tmux changes the name to the current directory. 
+autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window 'vim | " . expand("%:t") . "'")
+autocmd VimLeave * call system("tmux setw automatic-rename")

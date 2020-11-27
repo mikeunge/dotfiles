@@ -8,7 +8,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Define the theme.
-ZSH_THEME="mimix"
+ZSH_THEME="colorista"
 
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=5
@@ -59,7 +59,7 @@ auto_suggest_rand_color() {
 }
 
 # Set ZSH_AUTOSUGGEST_RAINBOW to 1 if you want random colors.
-ZSH_AUTOSUGGEST_RAINBOW=0
+ZSH_AUTOSUGGEST_RAINBOW=1
 
 # Check the settings.
 if [[ $ZSH_AUTOSUGGEST_RAINBOW > 0 ]]; then
