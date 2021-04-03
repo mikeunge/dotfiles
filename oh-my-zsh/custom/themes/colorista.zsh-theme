@@ -1,5 +1,5 @@
 # This shomehow shows no emoji at all..
-#
+
 PS1_EMOJIS=("🐶" "🐱" "🐭" "🐹" "🐰" "🦊" "🐻" "🐼" "🐨" "🐯" "🦁" "🐮" "🐷" "🐸" "🐵" "🙈" "🙉" "🙊" "🐔" "🐧" "🐦" "🐤" "🐴" "🦄" "🐙" "🦖" "🐳")
 NUMBER_OF_EMOJIS=${#PS1_EMOJIS[@]}
 THEME_DELIMITER="%{$fg_bold[blue]%}›%{$reset_color%}%{$fg_bold[red]%}›%{$reset_color%}%{$fg_bold[green]%}›%{$reset_color%}"

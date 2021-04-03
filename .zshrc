@@ -37,7 +37,7 @@ setopt notify
 bindkey -e
 
 # Load Plugin
-plugins=(git zsh-autosuggestions )
+plugins=(git zsh-autosuggestions)
 
 # Don't delete this.
 source $ZSH/oh-my-zsh.sh
@@ -50,9 +50,8 @@ source $ZSH/oh-my-zsh.sh
 
 # ZSH_AUTOSUGGESTION config
 #
-auto_suggest_rand_color() {
+function auto_suggest_rand_color() {
 	# Generate a random color for ZSH_autosuggest, pre define below.
-	#
 	ZSH_AUTOSUGGEST_COLORPALETTE=("pink" "white" "yellow" "blue" "red" "green" "magenta" "cyan")
 	ZSH_AUTOSUGGEST_NUMBER_OF_COLORS=${#ZSH_AUTOSUGGEST_COLORPALETTE[@]}
 	ZSH_AUTOSUGGEST_COLOR=${ZSH_AUTOSUGGEST_COLORPALETTE[$RANDOM % $ZSH_AUTOSUGGEST_NUMBER_OF_COLORS]}
@@ -60,7 +59,6 @@ auto_suggest_rand_color() {
 
 # Set ZSH_AUTOSUGGEST_RAINBOW to 1 if you want random colors.
 ZSH_AUTOSUGGEST_RAINBOW=1
-
 # Check the settings.
 if [[ $ZSH_AUTOSUGGEST_RAINBOW > 0 ]]; then
 	# Call the random function.
@@ -74,5 +72,11 @@ fi
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$ZSH_AUTOSUGGEST_COLOR,bold"
 ZSH_AUTOSUGGEST_USE_ASYN=true
 
-# Exports
-export PATH="/Applications/goneovim.app/Contents/MacOS:/Library/Frameworks/Python.framework/Versions/3.8/bin:/Users/mikeunge/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Users/mikeunge/.fzf/bin"
+
+# --- exports ---
+export PATH="/Users/mikeunge/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Users/mikeunge/.fzf/bin"
+
+# Ranger custom config
+export VISUAL=nvim;
+export EDITOR=nvim;
+RANGER_LOAD_DEFAULT_RC=FALSE

@@ -15,9 +15,15 @@ alias ls="exa -lhg"
 alias ll="ls"
 alias la="exa -lahg"
 alias ld="exa -lDhg"
+alias lsd="ls -snew"
 alias rmf="rm -rf"
+alias del="mvtobin() { mv $1  ~/.Trash/ };mvtobin"
 alias cp="cp -i"
 alias fnd='f() { find *$1* -d 0 };f'
+alias prnt="lp"
+# ALWAYS use the brew version
+alias python3="/usr/local/bin/python3"
+alias pip3="/usr/local/bin/pip3"
 
 # ---------------------------- terminal -----------------------------
 
@@ -26,27 +32,28 @@ alias cll="cl && ll"
 alias cla="cl && la"
 alias fetch="pfetch"
 alias reload=". ~/.zshrc" # reload (source) the profile
-alias rltmux="tmux source-file ~/.tmux.conf" # reload tmux config
+alias reloadtmux="tmux source-file ~/.tmux.conf" # reload tmux config
 alias tb="cl && tb" # clear screen and call taskbook
-alias top="bpytop"
+# Tmux commands to resize current pane, give a number (n) to shrink/grow
+alias txd="tmux resize-pane -D"
+alias txu="tmux resize-pane -U"
+alias txl="tmux resize-pane -L"
+alias txr="tmux resize-pane -R"
+
+alias trun="f() { tmux split-window -h '$* ; read' };f"
 
 # ----------------------- editor & filemanager -----------------------
 
 alias vim="nvim"
 alias shfm="bash ~/.shfm/shfm >/dev/null"
 
-# ---------------------------- notes --------------------------------
-
-alias note='cur_date; f() { printf "[%s] - %s"\n" "$dt" "$1" >> ~/Documents/terminal.note };f'
-alias notes="cat ~/Documents/terminal.note"
-
 # ---------------------------- utils --------------------------------
 
 alias aliases="vim ~/.config/aliasrc"
 alias viminit="vim ~/.config/nvim/init.vim"
+alias doominit="vim ~/.doom.d/init.el"
 alias zshrc="vim ~/.zshrc"
-alias theme="vim ~/.oh-my-zsh/custom/themes/mimix.zsh-theme"
+alias theme="vim ~/.oh-my-zsh/custom/themes/chronos.zsh-theme"
 alias tmuxconf="vim ~/.tmux.conf"
 alias shrug="echo '\n¯\_(ツ)_/¯'"
-
 
