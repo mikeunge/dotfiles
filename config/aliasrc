@@ -11,10 +11,11 @@ cur_date() {
 
 # ----------------------------- dirs ---------------------------------
 
-alias ls="exa -lhg"
-alias ll="ls"
-alias la="exa -lahg"
-alias ld="exa -lDhg"
+alias ls="exa --icons --long --git"
+alias ll="ls -lhg"
+alias lt="ls --tree --level=2"
+alias la="ls -lahg"
+alias ld="ls -lDhg"
 alias lsd="ls -snew"
 alias rmf="rm -rf"
 alias del="mvtobin() { mv $1  ~/.Trash/ };mvtobin"
