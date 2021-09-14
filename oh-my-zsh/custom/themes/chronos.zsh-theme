@@ -1,4 +1,2 @@
-THEME_DELIMITER='%{$fg_bold[blue]%}›%{$reset_color%}'
-PROMPT='%(?, ,%{$fg[red]%}FAIL: $? %{$reset_color%})
-./%c $THEME_DELIMITER ' 
-
+PROMPT='%(?, ,%{$fg[red]%}%BFAIL: $?%b %{$reset_color%})
+%{$fg[yellow]%}%B%n%b%{$reset_color%} :: %{$fg[blue]%}%~%{$reset_color%} >> ' 

@@ -1,8 +1,8 @@
-"---vimrc----------------------------------->
+"---vimrc_stable-------------------------------->
 "   |_      _ o|  _     _  _  _ 
 "   |_)\/  |||||<(-`|_|| )(_)(-`
 "------/------------------_/------>    
-" updated: 24. Mar. 2021
+" updated: 16. Jun. 2021
 "
 "
 " Check if 'plug.vim' exists, else, download from git.
@@ -29,7 +29,8 @@ call plug#begin("~/.vim/plugged")
 
     " Chadtree & icons
     Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
-    Plug 'ryanoasis/vim-devicons'
+    " Plug 'ryanoasis/vim-devicons'
+    Plug 'kyazdani42/nvim-web-devicons'
 
     " Undotree
     Plug 'mbbill/undotree'
@@ -50,7 +51,11 @@ call plug#begin("~/.vim/plugged")
 
     " Colorscheme - OneDark
     " -> (modified)
-    Plug 'joshdick/onedark.vim'
+    " Plug 'joshdick/onedark.vim'
+    Plug 'wojciechkepka/vim-github-dark'
+
+    " Bufferline - Tabs for vim
+    Plug 'akinsho/nvim-bufferline.lua'
 
     " - UI/UX end - 
 
@@ -128,7 +133,7 @@ syntax on
 
 " Set a max-width
 set colorcolumn=110
-highlight ColorColumn ctermbg=darkgray
+highlight ColorColumn ctermbg=0
 
 " Change history & undo size
 set history=1000
@@ -143,8 +148,6 @@ set tw=120
 set nowrap
 set fo-=t
 set cursorline
-"set colorcolumn=120
-highlight ColorColumn ctermbg=233
 
 " Configure tabs 
 set tabstop=4
@@ -187,15 +190,17 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Define colorscheme
-colorscheme onedark
-" Modify the OneDark theme
-let g:onedark_termcolors=256
-let g:onedark_hide_endofbuffer=0
-let g:onedark_terminal_italics=1
-" add the 'hi' modification to the onedark colorscheme so the custom_header's fg is white.
-autocmd ColorScheme onedark hi StartifyHeader ctermfg=000
+" " Define colorscheme
+" colorscheme onedark
+" " Modify the OneDark theme
+" let g:onedark_termcolors=256
+" let g:onedark_hide_endofbuffer=0
+" let g:onedark_terminal_italics=1
 
+" add the 'hi' modification to the onedark colorscheme so the custom_header's fg is white.
+autocmd ColorScheme ghdark hi StartifyHeader ctermfg=000
+colorscheme ghdark
+let g:gh_color = "soft"
 
 " Plugin Config below
 "
@@ -259,11 +264,8 @@ let g:fzf_action = {
 
 
 " -lightline-
-" let g:lightline = {
-"       \ 'colorscheme': 'onedark',
-" 	  \ }
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'ghdark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'modified' ] ]
@@ -323,7 +325,7 @@ let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 set autoread
 " path to clang
-let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/11.1.0/lib/libclang.dylib'
+let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/12.0.0/lib/libclang.dylib'
 " -deoplete end-
 
 
@@ -365,3 +367,19 @@ endif
 let g:indentLine_char_list = ['|', '|', '|', '|']
 " -indentLine end-
 
+
+" -bufferline-
+" These commands will navigate through buffers in order regardless of which mode you are using
+" e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
+nnoremap <silent>[b :BufferLineCycleNext<CR>
+nnoremap <silent>b] :BufferLineCyclePrev<CR>
+
+" These commands will move the current buffer backwards or forwards in the bufferline
+nnoremap <silent><mymap> :BufferLineMoveNext<CR>
+nnoremap <silent><mymap> :BufferLineMovePrev<CR>
+
+" These commands will sort buffers by directory, language, or a custom criteria
+nnoremap <silent>be :BufferLineSortByExtension<CR>
+nnoremap <silent>bd :BufferLineSortByDirectory<CR>
+nnoremap <silent><mymap> :lua require'bufferline'.sort_buffers_by(function (buf_a, buf_b) return buf_a.id < buf_b.id end)<CR>
+" -bufferline end-

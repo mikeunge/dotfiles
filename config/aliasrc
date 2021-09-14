@@ -45,16 +45,22 @@ alias trun="f() { tmux split-window -h '$* ; read' };f"
 
 # ----------------------- editor & filemanager -----------------------
 
-alias vim="nvim"
+alias vim="/usr/bin/vim"
+alias nvim="/usr/local/bin/nvim-nightly"
 alias shfm="bash ~/.shfm/shfm >/dev/null"
 
 # ---------------------------- utils --------------------------------
 
-alias aliases="vim ~/.config/aliasrc"
-alias viminit="vim ~/.config/nvim/init.vim"
-alias doominit="vim ~/.doom.d/init.el"
-alias zshrc="vim ~/.zshrc"
-alias theme="vim ~/.oh-my-zsh/custom/themes/chronos.zsh-theme"
-alias tmuxconf="vim ~/.tmux.conf"
+alias aliases="nvim ~/.config/aliasrc"
+alias viminit="nvim ~/.config/nvim/init.vim"
+alias vim-stable="nvim ~/.config/nvim/stable.vim"
+alias vim-nightly="nvim ~/.config/nvim/nightly.vim"
+alias doominit="nvim ~/.doom.d/init.el"
+alias zshrc="nvim ~/.zshrc"
+alias theme="nvim ~/.oh-my-zsh/custom/themes/chronos.zsh-theme"
+alias tmuxconf="nvim ~/.tmux.conf"
 alias shrug="echo '\n¯\_(ツ)_/¯'"
+
+alias pyproject="/Users/mikeunge/Development/Scripts/pyproject/pp.sh"
+alias pp="pyproject"
 

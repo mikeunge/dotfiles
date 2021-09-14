@@ -1,14 +1,14 @@
 ZSH_DISABLE_COMPFIX=true
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/mikeunge/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Export my language settings.
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Define the theme.
-ZSH_THEME="colorista"
+ZSH_THEME="chronos"
 
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=5
@@ -37,7 +37,7 @@ setopt notify
 bindkey -e
 
 # Load Plugin
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 # Don't delete this.
 source $ZSH/oh-my-zsh.sh
@@ -58,25 +58,24 @@ function auto_suggest_rand_color() {
 }
 
 # Set ZSH_AUTOSUGGEST_RAINBOW to 1 if you want random colors.
-ZSH_AUTOSUGGEST_RAINBOW=1
+ZSH_AUTOSUGGEST_RAINBOW=0
 # Check the settings.
 if [[ $ZSH_AUTOSUGGEST_RAINBOW > 0 ]]; then
 	# Call the random function.
 	auto_suggest_rand_color
 else
 	# Define a color you want to use.
-	ZSH_AUTOSUGGEST_COLOR="magenta"
+	ZSH_AUTOSUGGEST_COLOR="red"
 fi
 
 # ZSH_AUTOSUGGEST change the color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$ZSH_AUTOSUGGEST_COLOR,bold"
 ZSH_AUTOSUGGEST_USE_ASYN=true
 
-
 # --- exports ---
 export PATH="/Users/mikeunge/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Users/mikeunge/.fzf/bin"
 
-# Ranger custom config
-export VISUAL=nvim;
-export EDITOR=nvim;
-RANGER_LOAD_DEFAULT_RC=FALSE
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+pokemon-colorscripts -r
