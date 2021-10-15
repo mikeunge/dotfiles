@@ -21,9 +21,6 @@ font pango:Fira Code Nerd Font 10
 # startup apps and window decs
 default_orientation horizontal
 workspace_layout default
-for_window [workspace="1"] floating enable
-for_window [workspace="2"] floating enable
-for_window [workspace="3"] floating enable
 
 # set the border size and radius
 for_window [class="^.*"] border pixel 0
@@ -146,16 +143,6 @@ bindsym $mod+Shift+r mode "resize"
 # client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 # client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 # client.background       #F8F8F2
-
-
-# --i3status bar
-#
-# bar {
-# 	# height 25
-# 	font pango:Fira Code Nerd Font 10
-# 	# load config from seperate file
-# 	status_command i3status --config ~/.config/i3/statusbar
-# }
 
 
 # --Execute programs
