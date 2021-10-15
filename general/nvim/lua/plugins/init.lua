@@ -69,15 +69,15 @@ return packer.startup(function()
       config = override_req("feline", "plugins.configs.statusline"),
    }
 
-   -- use {
-   --    "akinsho/bufferline.nvim",
-   --    disable = not status.bufferline,
-   --    after = "nvim-web-devicons",
-   --    config = override_req("bufferline", "plugins.configs.bufferline"),
-   --    setup = function()
-   --       require("core.mappings").bufferline()
-   --    end,
-   -- }
+   use {
+      "akinsho/bufferline.nvim",
+      disable = not status.bufferline,
+      after = "nvim-web-devicons",
+      config = override_req("bufferline", "plugins.configs.bufferline"),
+      setup = function()
+         require("core.mappings").bufferline()
+      end,
+   }
 
    use {
       "lukas-reineke/indent-blankline.nvim",
@@ -262,6 +262,7 @@ return packer.startup(function()
       end,
    }
 
+   -- uWu colorscheme
    use { 'mangeshrex/uwu.vim' }
 
    require("core.hooks").run("install_plugins", use)

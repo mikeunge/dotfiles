@@ -49,10 +49,11 @@ M.ui = {
    theme_toggler = {
       "onedark",
       "gruvchad",
+      "uwu",
    },
    -- Enable this only if your terminal has the colorscheme set which nvchad uses
    -- For Ex : if you have onedark set in nvchad, set onedark's bg color on your terminal
-   transparency = false,
+   transparency = true,
 }
 
 -- these are plugin related options
@@ -60,8 +61,8 @@ M.plugins = {
    -- enable and disable plugins (false for disable)
    status = {
       blankline = true, -- show code scope with symbols
-      bufferline = false, -- list open buffers up the top, easy switching too
-      colorizer = false, -- color RGB, HEX, CSS, NAME color codes
+      bufferline = true, -- list open buffers up the top, easy switching too
+      colorizer = true, -- color RGB, HEX, CSS, NAME color codes
       comment = true, -- easily (un)comment code, language aware
       dashboard = true, -- NeoVim 'home screen' on open
       esc_insertmode = true, -- map to <ESC> with no lag
@@ -78,7 +79,7 @@ M.plugins = {
          setup_lspconf = "", -- path of file containing setups of different lsps
       },
       nvimtree = {
-         enable_git = 0,
+         enable_git = 1,
       },
       luasnip = {
          snippet_path = {},
