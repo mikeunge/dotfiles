@@ -1,0 +1,52 @@
+# !CATUION! !CAUTION!
+#
+# Some aliases require programs/scripts to work proparly.
+#
+#
+# -------------------------- functions -------------------------------
+
+cur_date() {
+    dt="$(date +'%d.%m.%Y %T')"
+}
+
+# ----------------------------- dirs ---------------------------------
+
+alias ls="exa --icons --long --git"
+alias ll="ls -lhg"
+alias lt="ls --tree --level=2"
+alias la="ls -lahg"
+alias ld="ls -lDhg"
+alias lsd="ls -snew"
+alias rmf="rm -rf"
+alias del="mvtobin() { mv $1  ~/.Trash/ };mvtobin"
+alias cp="cp -ir"
+alias mkdir="mkdir -p"
+alias fnd='f() { find *$1* -maxdepth 0 };f'
+alias prnt="lp"
+alias open="xdg-open"
+
+# ---------------------------- terminal -----------------------------
+
+alias cl="clear"
+alias cll="cl && ll"
+alias cla="cl && la"
+alias fetch="pfetch"
+alias reload=". ~/.zshrc" # reload (source) the profile
+
+# ----------------------- editor & filemanager -----------------------
+
+alias vim="/usr/bin/nvim"
+alias nvim="/usr/bin/nvim"
+
+# ---------------------------- utils --------------------------------
+
+alias ranger="TERM=xterm-kitty ranger"
+alias icat="kitty +kitten icat"
+alias aliases="nvim ~/.config/aliasrc"
+alias zshrc="nvim ~/.zshrc"
+alias theme="nvim ~/.oh-my-zsh/custom/themes/chronos.zsh-theme"
+alias tmuxconf="nvim ~/.tmux.conf"
+alias shrug="echo '\n¯\_(ツ)_/¯'"
+# connect_box => makes it easier to connect to my bluetooth speaker at work
+alias connect_box="bluetoothctl connect B8:D5:0B:94:90:03"
+

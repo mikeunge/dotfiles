@@ -1,0 +1,197 @@
+#==================================================
+#
+#
+#   ██╗██████╗       ██╗    ██╗███╗   ███╗
+#   ██║╚════██╗      ██║    ██║████╗ ████║
+#   ██║ █████╔╝█████╗██║ █╗ ██║██╔████╔██║
+#   ██║ ╚═══██╗╚════╝██║███╗██║██║╚██╔╝██║
+#   ██║██████╔╝      ╚███╔███╔╝██║ ╚═╝ ██║
+#   ╚═╝╚═════╝        ╚══╝╚══╝ ╚═╝     ╚═╝
+#
+#
+#==================================================
+
+# set desired modifiers
+set $mod Mod4
+set $ALT Mod1
+
+# set the font
+font pango:Fira Code Nerd Font 10
+
+# startup apps and window decs
+default_orientation horizontal
+workspace_layout default
+for_window [workspace="1"] floating enable
+for_window [workspace="2"] floating enable
+for_window [workspace="3"] floating enable
+
+# set the border size and radius
+for_window [class="^.*"] border pixel 0
+# border_radius 6
+
+# define the gap size
+gaps inner 30
+gaps outer 10
+
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $ALT
+floating_minimum_size 150 x 150
+floating_maximum_size 1928 x 1080
+
+
+# kill focused window
+bindsym $ALT+q kill
+
+
+# Change Window behaviour
+for_window [class="Firefox"] border
+for_window [class="Thunderbird"] border
+for_window [class="Telegram"] floating enable
+for_window [class="Spotify"] floating enable
+for_window [class="Gnome-calculator"] floating enable
+for_window [class="Discord"] floating enable
+for_window [class="Teamviewer"] floating enable
+for_window [class="Remmina"] floating enable
+for_window [class="gio"] floating enable
+for_window [class="Nautilus"] floating enable
+
+
+# --Cahange modi on the fly
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $ALT+space focus mode_toggle
+# split in horizontal orientation
+bindsym $mod+Shift+v split h
+# split in vertical orientation
+bindsym $mod+v split v
+
+
+# reload the configuration file
+bindsym $mod+Shift+C reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+q restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+Q exit
+
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+$ALT+1 move container to workspace 1
+bindsym $mod+$ALT+2 move container to workspace 2
+bindsym $mod+$ALT+3 move container to workspace 3
+bindsym $mod+$ALT+4 move container to workspace 4
+bindsym $mod+$ALT+5 move container to workspace 5
+bindsym $mod+$ALT+6 move container to workspace 6
+bindsym $mod+$ALT+7 move container to workspace 7
+bindsym $mod+$ALT+8 move container to workspace 8
+bindsym $mod+$ALT+9 move container to workspace 9
+bindsym $mod+$ALT+0 move container to workspace 10
+
+
+# --Focus and resizing
+#
+# Modeled the behaviour after vim key bindings.
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+mode "resize" {
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $mod+h resize shrink width 10 px or 10 ppt
+        bindsym $mod+j resize grow height 10 px or 10 ppt
+        bindsym $mod+k resize shrink height 10 px or 10 ppt
+        bindsym $mod+l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Press $mod+shift+r to enter resize mode.
+# After you finished resizing your panels, leave with esc or ret key.
+bindsym $mod+Shift+r mode "resize"
+
+
+# --Border design
+#
+# client.focused          #7B1FA2 #7B1FA2 #F8F8F2 #7B1FA2   #7B1FA2
+# client.focused_inactive #4A148C #4A148C #F8F8F2 #4A148C   #4A148C
+# client.unfocused        #4A148C #4A148C #F8F8F2 #4A148C   #4A148C
+# client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+# client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+# client.background       #F8F8F2
+
+
+# --i3status bar
+#
+# bar {
+# 	# height 25
+# 	font pango:Fira Code Nerd Font 10
+# 	# load config from seperate file
+# 	status_command i3status --config ~/.config/i3/statusbar
+# }
+
+
+# --Execute programs
+#
+# start a terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
+# launch screenlock
+bindsym $ALT+l exec $HOME/Script/i3lock/lock.sh
+# run 	 -> start a program
+bindsym $mod+space exec rofi -show run
+# window -> switch to window
+bindsym $ALT+Tab exec --no-startup-id rofi -modi combi -combi-modi window -show combi
+bindsym $mod+F6 exec firefox
+bindsym $mod+F10 exec thunderbird
+# spotify bindings (uses playerctl)
+bindsym F5 exec playerctl -p spotify previous
+bindsym F6 exec playerctl -p spotify next
+bindsym F7 exec playerctl -p spotify play-pause 
+# audio controls
+bindsym $ALT+F9 exec audic toggle
+bindsym $ALT+F10 exec audic volume --decrease 10
+bindsym $ALT+F11 exec audic volume --increase 10
+# re-launch polybar
+bindsym $mod+$ALT+p exec --no-startup-id ~/.config/polybar/launch.sh &
+# take a screenshot
+bindsym $ALT+s exec --no-startup-id flameshot full -p $HOME/Pictures/Screenshot/
+
+
+# --Startup commands
+#
+# set the wallpaper (with feh)
+exec_always --no-startup-id /home/mikeunge/Script/WallpaperEngine/wpe.py
+# start i3-auto-layout (so it behaves like bspwm)
+exec_always --no-startup-id i3-auto-layout
+# launch polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
+# picom makes windows transparent, adds shadow, rounden corners and a bunch of other cool stuff
+exec_always --no-startup-id picom &

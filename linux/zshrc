@@ -1,0 +1,64 @@
+ZSH_DISABLE_COMPFIX=true
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Export my language settings.
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Define the theme.
+# ZSH_THEME="chronos"
+ZSH_THEME="spaceship"
+
+# Uncomment the following line to change how often to auto-update (in days).
+export UPDATE_ZSH_DAYS=5
+
+# Uncomment the following line to disable auto-setting terminal title.
+DISABLE_AUTO_TITLE="true"
+
+# Change the tab_title to a fixed string. 
+# Make sure that AUTO_TITLE is disabled.
+function precmd () {
+	print -Pn - '\e]0;%~\a'
+	# title="`hostname`"
+	# window_title="print -P - '\e]0;$title\a'"
+	# echo -ne "$window_title"
+}
+
+# Waiting dots.
+COMPLETION_WAITING_DOTS="true"
+
+# History file and size settings.
+HISTFILE=~/.histfile
+HISTSIZE=20000
+SAVEHIST=10000
+
+# Disable bell ring notification thingy.
+setopt notify
+bindkey -e
+
+# Load Plugin
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
+# Don't delete this.
+source $ZSH/oh-my-zsh.sh
+
+### User configuration ###
+
+# Load aliases and fzf.
+[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ZSH_AUTOSUGGEST change the color
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5fafd7,bold"
+ZSH_AUTOSUGGEST_USE_ASYN=true
+# change the keybinding for 'accepting' the suggestion to 2x TAB
+bindkey '^ ' autosuggest-accept
+
+# append golang to the $PATH
+path+=('/usr/local/go/bin')
+export PATH
+export EDITOR=nvim
+# export the "ZEIT_DB" path, this is where "zeit" stores all the data.
+export ZEIT_DB=~/.config/zeit.db
