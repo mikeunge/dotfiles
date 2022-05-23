@@ -1,5 +1,8 @@
-local ok, err = pcall(require, "core")
+-- sourcing config files.
+require("settings")
+require("plugins")
+require("theme")
+require("maps")
 
-if not ok then
-   error("Error loading core" .. "\n\n" .. err)
-end
+local user_settings_file = require("user_settings")
+user_settings_file.other_configs()
