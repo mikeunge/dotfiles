@@ -10,10 +10,13 @@ that goes along with it.
   - [./man](#man)
   - [./bin](#bin)
   - [./config](#config)
+  - [./fonts](#fonts)
   - [./rice](#rice)
 
 ## ./bin
 
 ## ./config
+
+## ./fonts
 
 ## ./rice
