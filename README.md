@@ -1,12 +1,19 @@
 # dotfiles
-*My `Mac OS` dotfiles*
 
-### _about
-I use `iTerm2` as my terminal emulator and `tmux` for everythig inside. TextEditor is `vim` (❤️).
+Welcome to my **dotfiles** - this repository contains (_hopefully_) all my
+customizations, scripts and tools I've installed as well as the configuration
+that goes along with it.
 
-### _screenshots
-> **code**
-![code 1 pane](assets/screenshots/code_single.png "one code editor")
+## ./man
 
-> **code split**
-![code 2 panes](assets/screenshots/code_multi.png "2 panes to edit")
+- [dotfiles](#dotfiles)
+  - [./man](#man)
+  - [./bin](#bin)
+  - [./config](#config)
+  - [./rice](#rice)
+
+## ./bin
+
+## ./config
+
+## ./rice
