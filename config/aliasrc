@@ -1,0 +1,93 @@
+# cdd is a superset for cd - it remembers the last visited place
+cdd () {
+    echo `pwd` > /tmp/last.visit
+    cd "$@"
+}
+
+# ccd - reads the input from /tmp/last.visit and upadates it, after it cds back there
+cc () {
+    local LAST_VISITED=`cat /tmp/last.visit`
+    echo `pwd` > /tmp/last.visit
+    cd $LAST_VISITED
+}
+
+# duh - get the disk usage for a given folder
+duh () {
+  du -ha --max-depth=1 "$1" | sort -hr | grep -E "M|G"
+}
+
+# spawn a yazi shell
+ya() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# commands
+alias ls="exa --icons --long"
+alias ll="ls -lhg"
+alias lt="ls --tree --level=2"
+alias la="ls -lahg"
+alias ld="ls -lDhg"
+alias lsd="ls -snew"
+alias rmf="rm -rf"
+alias cp="cp -ir"
+alias mkdir="mkdir -p"
+alias cl="clear"
+alias cll="cl && ll"
+alias cla="cl && la"
+alias reload=". $HOME/.zshrc" # reload (source) the profile
+alias sync="rsync -u -H --progress --human-readable --stats"
+# remove all files that are __NOT__ commited / new files
+alias gitrm="git ls-files -z -o --exclude-standard | xargs -0 rm -rf"
+
+# commands but they depend on stuff
+alias fetch="pfetch"
+alias tf="terraform"
+alias pp="pnpm"
+alias fz="fzf --multi --height=80% --border=sharp \
+--preview='tree -C {}' --preview-window='45%,border-sharp' \
+--prompt='Dirs > ' \
+--bind='enter:execute($EDITOR {+})' \
+--bind='del:execute(rm -ri {+})' \
+--bind='ctrl-p:toggle-preview' \
+--bind='ctrl-d:change-prompt(Dirs > )' \
+--bind='ctrl-d:+reload(find -type d)' \
+--bind='ctrl-d:+change-preview(tree -C {})' \
+--bind='ctrl-d:+refresh-preview' \
+--bind='ctrl-f:change-prompt(Files > )' \
+--bind='ctrl-f:+reload(find -type f)' \
+--bind='ctrl-f:+change-preview(cat {})' \
+--bind='ctrl-f:+refresh-preview' \
+--bind='ctrl-a:select-all' \
+--bind='ctrl-x:deselect-all' \
+--header ' \
+CTRL-D to display directories | CTRL-F to display files \
+CTRL-A to select all | CTRL-x to deselect all \
+ENTER to edit | DEL to delete \
+CTRL-P to toggle preview'"
+
+# call wallpaper engine with work profile
+alias wpw="wpe -c $HOME/.config/wallpaper_engine/work.json"
+
+# editors
+alias vim="/usr/bin/nvim"
+alias nvim="/usr/bin/nvim"
+
+# shortcuts
+alias hok="cdd $HOME/Development/hokify/hokify/"
+alias hok2="cdd $HOME/Development/hokify/hokify-2/"
+alias hok3="cdd $HOME/Development/hokify/hokify-3/"
+alias aliases="nvim $HOME/.config/aliasrc"
+alias zshrc="nvim $HOME/.zshrc"
+alias tmuxc="nvim $HOME/.config/tmux/tmux.conf"
+
+# scripts
+alias sc="$HOME/Development/mikeunge/Scripts/open-last-screenshot/open-last-screenshot.py"
+alias dnd="$HOME/Development/mikeunge/Scripts/dnd/dnd.sh"
+
+# misc
+alias shrug="echo '\n¯\_(ツ)_/¯'"
