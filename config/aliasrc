@@ -1,0 +1,89 @@
+# cdd is a superset for cd - it remembers the last visited place
+cdd () {
+  uid=`tmux display-message -p '#{pane_id}'`
+  echo `pwd` > /tmp/last.visit$uid
+  cd "$@"
+}
+
+# ccd - reads the input from /tmp/last.visit and upadates it, after it cds back there
+cc () {
+    uid=`tmux display-message -p '#{pane_id}'`
+    local LAST_VISITED=`cat /tmp/last.visit$uid`
+    echo `pwd` > /tmp/last.visit$uid
+    cd $LAST_VISITED
+}
+
+# duh - get the disk usage for a given folder
+duh () {
+  du -h -d 1 "$1" | sort -hr | grep -E '^[0-9.]+[MG]'
+}
+
+# obsidianNew - spawn nvim in given path ($1) and launch obsidian plugin with the "new" command
+obsidianNew() {
+  if [ -z "$1" ] || [ ! -d "$1" ]; then
+    echo "Usage: obsidianNew <directory>"
+    return 1
+  fi
+  nvim +"cd $(realpath "$1")" +"enew" +"lua vim.schedule(function() require('lazy.core.loader').load({'obsidian.nvim'}, { force = true }) vim.cmd('ObsidianNew') end)"
+}
+
+# obsidianNew - spawn nvim in given path ($1) and launch obsidian plugin with the "quick switch" command
+obsidianOpen() {
+  #nvim "$1" +"lua vim.schedule(function() require('lazy.core.loader').load({'obsidian.nvim'}, { force = true }) vim.cmd('ObsidianQuickSwitch') end)"
+  if [ -z "$1" ] || [ ! -d "$1" ]; then
+    echo "Usage: obsidianOpen <vault-directory>"
+    return 1
+  fi
+  nvim +"cd $(realpath "$1")" +"enew" +"lua vim.schedule(function() require('lazy.core.loader').load({'obsidian.nvim'}, { force = true }) vim.cmd('ObsidianQuickSwitch') end)"
+}
+
+# commands
+alias ls="eza --icons --long"
+alias ll="ls -lhg"
+alias lt="ls --tree --level=2"
+alias la="ls -lahg"
+alias ld="ls -lDhg"
+alias lsd="ls -snew"
+alias rmf="rm -rf"
+alias cp="cp -ir"
+alias mkdir="mkdir -p"
+alias cl="clear"
+alias cll="cl && ll"
+alias cla="cl && la"
+alias reload=". ~/.zshrc" # reload (source) the profile
+alias sync="rsync -u -H --progress --human-readable --stats"
+
+# remove all files that are __NOT__ commited / new files
+alias gitrm="git ls-files -z -o --exclude-standard | xargs -0 rm -rf"
+
+# note taking with nvim & obsidian
+alias notes="obsidianOpen ~/Documents/vaults/notes"
+alias nnew="obsidianNew ~/Documents/vaults/notes"
+alias pnotes="obsidianOpen ~/Documents/vaults/personal"
+alias pnew="obsidianNew ~/Documents/vaults/personal"
+alias wnotes="obsidianOpen ~/Documents/vaults/work"
+alias wnew="obsidianNew ~/Documents/vaults/work"
+
+# commands but they depend on stuff
+alias fetch="pfetch"
+alias tf="terraform"
+alias pp="pnpm"
+alias lg="lazygit"
+
+# call wallpaper engine with work profile
+alias wpw="wpe -c $HOME/.config/wallpaper_engine/work.json"
+
+# editors
+alias vim="/opt/homebrew/bin/nvim"
+alias nvim="/opt/homebrew/bin/nvim"
+
+# shortcuts
+alias hok1="cdd $HOME/Development/hokify/hokify-1/"
+alias hok2="cdd $HOME/Development/hokify/hokify-2/"
+alias hok3="cdd $HOME/Development/hokify/hokify-3"
+alias aliases="nvim $HOME/.config/aliasrc"
+alias zshrc="nvim $HOME/.zshrc"
+alias tmuxc="nvim $HOME/.config/tmux/tmux.conf"
+
+# misc
+alias shrug="echo '\n¯\_(ツ)_/¯'"

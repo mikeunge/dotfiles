@@ -1,0 +1,12 @@
+[submodule "nvim"]
+	path = nvim
+	url = https://github.com/mikeunge/.nvim
+[submodule "bin/wpe"]
+	path = bin/wpe
+	url = https://github.com/mikeunge/WallpaperEngine
+[submodule "bin/sshman"]
+	path = bin/sshman
+	url = https://github.com/mikeunge/sshman
+[submodule "bin/scripts"]
+	path = bin/scripts
+	url = https://github.com/mikeunge/Scripts
